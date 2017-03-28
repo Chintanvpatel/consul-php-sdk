@@ -17,7 +17,7 @@ class KV
     public function get($key, array $options = array())
     {
         $params = array(
-            'query' => OptionsResolver::resolve($options, array('dc', 'recurse', 'keys', 'separator', 'raw')),
+            'query' => OptionsResolver::resolve($options, array('dc', 'recurse', 'keys', 'separator', 'raw', 'token')),
         );
 
         return $this->client->get('v1/kv/'.$key, $params);
@@ -27,7 +27,7 @@ class KV
     {
         $params = array(
             'body' => $value,
-            'query' => OptionsResolver::resolve($options, array('dc', 'flags', 'cas', 'acquire', 'release')),
+            'query' => OptionsResolver::resolve($options, array('dc', 'flags', 'cas', 'acquire', 'release', 'token')),
         );
 
         return $this->client->put('v1/kv/'.$key, $params);
@@ -36,7 +36,7 @@ class KV
     public function delete($key, array $options = array())
     {
         $params = array(
-            'query' => OptionsResolver::resolve($options, array('dc', 'recurse')),
+            'query' => OptionsResolver::resolve($options, array('dc', 'recurse', 'token')),
         );
 
         return $this->client->delete('v1/kv/'.$key, $params);
