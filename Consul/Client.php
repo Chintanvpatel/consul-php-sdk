@@ -71,7 +71,7 @@ class Client
         $this->logger->debug(sprintf('Requesting %s %s', $method, $url), array('options' => $options));
 
         try {
-            $this->logger->error($url);
+            $this->logger->error('----'.$url.'-----');
             $response = $this->client->request($method, $url, $options);
         } catch (TransferException $e) {
             $message = sprintf('Something went wrong when calling consul (%s).', $e->getMessage());
